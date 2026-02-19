@@ -1,0 +1,161 @@
+/**
+ * Light Views Counter - Widget Styles
+ *
+ * @package Light_Views_Counter
+ */
+
+
+/** Light View Counter bag */
+.lvc-post-views {
+    padding: 12px 25px;
+    border-radius: 7px;
+    border: 1px solid #8883;
+    display: inline-flex;
+    margin: 0 0 1.5em;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: .9em;
+}
+
+.lvc-view-icon {
+    width: 1em;
+}
+
+/** light views counter shortcodes  */
+.lvc-views-minimal {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .9rem;
+}
+
+.lvc-views-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: #5a03ff;
+    border-radius: 20px;
+    font-size: .9rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.lvc-views-badge .lvc-count {
+    font-weight: 700;
+}
+
+.lvc-views-compact {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: .8rem;
+}
+
+.lvc-icon svg {
+    width: max(14px, .8rem);
+}
+
+.lvc-views-default {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 4px;
+    border: 1px solid #8882;
+}
+
+.lvc-views-default .lvc-icon {
+    font-size: 18px;
+}
+
+.lvc-views-default .lvc-count {
+    font-weight: 600;
+}
+
+/* Popular Posts Widget */
+.lvc-popular-posts-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lvc-popular-post-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #8881;
+}
+
+.lvc-popular-post-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.lvc-post-thumb {
+    flex-shrink: 0;
+    margin-right: 12px;
+    width: 90px;
+}
+
+.lvc-post-thumb a {
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.lvc-thumb-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.lvc-post-thumb a:hover .lvc-thumb-img {
+    transform: scale(1.05);
+}
+
+.lvc-post-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.lvc-post-title {
+    font-size: max(.8rem, 14px);
+    margin: 0 0 5px 0;
+}
+
+.lvc-post-title a {
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.lvc-post-title a:hover {
+    text-decoration: underline;
+}
+
+.lvc-post-meta {
+    font-size: 12px;
+    color: #aaa;
+    display: flex;
+    gap: 5px 12px;
+    flex-wrap: wrap;
+}
+
+.lvc-meta-date,
+.lvc-meta-views {
+    display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .lvc-post-thumb {
+        width: 75px;
+        margin-right: 12px;
+    }
+}

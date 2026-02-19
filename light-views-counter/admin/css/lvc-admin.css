@@ -1,0 +1,1282 @@
+/**
+ * Light Views Counter - Admin Styles
+ *
+ * Modern admin interface styling matching OpenAI Assistant design.
+ *
+ * @package Light_Views_Counter
+ * @since   1.0.0
+ */
+
+/* ============================================================================
+   ADMIN CONTAINER
+   ========================================================================= */
+
+.lvc-admin-wrap {
+    max-width: 1420px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.lvc-admin-header {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.lvc-admin-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.lvc-admin-header p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* ============================================================================
+   STATISTICS DASHBOARD
+   ========================================================================= */
+
+.lvc-stats-dashboard {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.lvc-stats-dashboard h2 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.lvc-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.lvc-stat-box {
+    background: #000;
+    padding: 25px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lvc-stat-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.lvc-stat-box h3 {
+    margin: 0 0 8px 0;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.lvc-stat-box p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+/* ============================================================================
+   SETTINGS SECTIONS
+   ========================================================================= */
+
+.lvc-settings-section {
+    background: #fff;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid #8882;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.lvc-section-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9fafb;
+}
+
+.lvc-section-header h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e1e1e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lvc-section-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lvc-section-body {
+    padding: 0;
+}
+
+/* ============================================================================
+   SETTING ROWS
+   ========================================================================= */
+
+.lvc-setting-row {
+    padding: 20px 30px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.2s ease;
+}
+
+.lvc-setting-row:last-child {
+    border-bottom: none;
+}
+
+.lvc-setting-row:hover {
+    background: #8881;
+}
+
+.lvc-setting-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lvc-setting-label label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1e1e1e;
+    margin: 0;
+    cursor: pointer;
+}
+
+.lvc-setting-label .description {
+    display: block;
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+    line-height: 1.5;
+}
+
+.lvc-setting-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 200px;
+    justify-content: flex-end;
+}
+
+/* ============================================================================
+   FORM CONTROLS
+   ========================================================================= */
+
+.lvc-setting-input {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #1e1e1e;
+    background: #fff;
+    transition: all 0.2s ease;
+    min-width: 120px;
+}
+
+.lvc-setting-input:focus {
+    outline: none;
+    border-color: #42b978;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.lvc-setting-input[type="number"] {
+    width: 100px;
+}
+
+select.lvc-setting-input {
+    cursor: pointer;
+    padding-right: 30px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"%3e%3cpath fill="%236b7280" d="M7 7l3 3 3-3"/%3e%3c/svg%3e');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    appearance: none;
+}
+
+/* ============================================================================
+   TOGGLE SWITCH
+   ========================================================================= */
+
+.lvc-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+}
+
+.lvc-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.lvc-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: 0.3s;
+    border-radius: 26px;
+}
+
+.lvc-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.lvc-toggle-switch input:checked + .lvc-toggle-slider {
+    background-color: #42b978;
+}
+
+.lvc-toggle-switch input:checked + .lvc-toggle-slider:before {
+    transform: translateX(22px);
+}
+
+.lvc-toggle-switch input:focus + .lvc-toggle-slider {
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ============================================================================
+   INFO ICONS & TOOLTIPS
+   ========================================================================= */
+
+.lvc-info-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+
+.lvc-info-icon:hover {
+    background: #42b978;
+    color: #fff;
+}
+
+.lvc-info-icon .lvc-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    background: #1e1e1e;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.4;
+    border-radius: 6px;
+    white-space: nowrap;
+    max-width: 250px;
+    white-space: normal;
+    text-align: center;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.lvc-info-icon .lvc-tooltip:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1e1e1e transparent transparent transparent;
+}
+
+/* ============================================================================
+   POPULAR POSTS SECTION
+   ========================================================================= */
+
+.lvc-popular-posts-section {
+    margin-top: 30px;
+}
+
+.lvc-popular-posts-section h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.lvc-popular-posts-section .description {
+    color: #6b7280;
+}
+
+/* Time Period Tabs */
+.lvc-time-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.lvc-time-tab {
+    padding: 8px 16px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    color: #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.lvc-time-tab:hover {
+    border-color: #42b978;
+    color: #42b978;
+    background: #f9fafb;
+}
+
+.lvc-time-tab.active {
+    background: #42b978;
+    color: #fff;
+    border-color: #42b978;
+}
+
+.lvc-time-tab.active:hover {
+    background: #42b978;
+    border-color: #42b978;
+}
+
+/* Popular Posts Table */
+.lvc-popular-table-wrapper {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.lvc-popular-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lvc-popular-table thead {
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.lvc-popular-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Table column widths */
+.lvc-popular-table th:first-child {
+    width: 60px;
+    text-align: center;
+}
+
+.lvc-popular-table th:nth-child(3) {
+    width: 120px;
+}
+
+.lvc-popular-table th:nth-child(4) {
+    width: 150px;
+}
+
+.lvc-popular-table th:nth-child(5) {
+    width: 100px;
+}
+
+.lvc-popular-table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s ease;
+}
+
+.lvc-popular-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.lvc-popular-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.lvc-popular-table td {
+    padding: 16px;
+    font-size: 14px;
+    color: #1e1e1e;
+}
+
+.lvc-popular-table td a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.lvc-popular-table td a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 782px) {
+    .lvc-time-tabs {
+        gap: 6px;
+    }
+
+    .lvc-time-tab {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .lvc-popular-table th,
+    .lvc-popular-table td {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+
+/* ============================================================================
+   TOAST NOTIFICATIONS (Top Right Popup)
+   ========================================================================= */
+
+.lvc-toast-container {
+    position: fixed;
+    top: 52px;
+    right: 20px;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.lvc-toast {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 250px;
+    max-width: 400px;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto;
+}
+
+.lvc-toast.lvc-toast-show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.lvc-toast-saving {
+    background: #eff6ff;
+    color: #42b978;
+    border-left: 4px solid #42b978;
+}
+
+.lvc-toast-success {
+    background: #ecfdf5;
+    color: #059669;
+    border-left: 4px solid #059669;
+}
+
+.lvc-toast-error {
+    background: #fef2f2;
+    color: #dc2626;
+    border-left: 4px solid #dc2626;
+}
+
+.lvc-toast .dashicons {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.lvc-toast-message {
+    flex: 1;
+    line-height: 1.4;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Adjust for admin bar */
+@media screen and (max-width: 782px) {
+    .lvc-toast-container {
+        top: 46px;
+        right: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .lvc-toast-container {
+        left: 10px;
+        right: 10px;
+    }
+
+    .lvc-toast {
+        min-width: auto;
+        max-width: none;
+    }
+}
+
+/* ============================================================================
+   ACTION BUTTONS
+   ========================================================================= */
+
+.lvc-actions-section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.lvc-actions-section h3 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.lvc-action-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.lvc-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.lvc-action-btn.primary {
+    background: #42b978;
+    color: #fff;
+}
+
+.lvc-action-btn.primary:hover {
+    background: #5a67d8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.lvc-action-btn.secondary {
+    background: #f3f4f6;
+    color: #1e1e1e;
+}
+
+.lvc-action-btn.secondary:hover {
+    background: #e5e7eb;
+}
+
+.lvc-action-btn.danger {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.lvc-action-btn.danger:hover {
+    background: #fecaca;
+}
+
+.lvc-action-btn:disabled,
+.lvc-action-btn.loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.lvc-action-btn .dashicons {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+}
+
+/* ============================================================================
+   TAB NAVIGATION
+   ========================================================================= */
+
+.lvc-tab-navigation {
+    display: flex;
+    gap: 8px;
+}
+
+.lvc-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    color: #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.lvc-tab-btn:hover {
+    border-color: #42b978;
+    color: #42b978;
+    background: #f9fafb;
+}
+
+.lvc-tab-btn.active {
+    background: #42b978;
+    color: #fff;
+    border-color: #42b978;
+}
+
+.lvc-tab-btn .dashicons {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+}
+
+
+/* ============================================================================
+   TAB CONTENT
+   ========================================================================= */
+
+/* Hide all tabs by default */
+.lvc-tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Show active tab with fade-in animation */
+.lvc-tab-content.active {
+    display: block;
+    animation: lvcFadeIn 0.3s ease-in-out forwards;
+}
+
+/* FOUC Prevention: Show settings tab by default before JS loads
+   This prevents flash of all content on page load */
+.lvc-admin-wrap #lvc-tab-settings {
+    display: block;
+    opacity: 1;
+}
+
+/* Once JS adds active class to any tab, respect the active state */
+.lvc-admin-wrap .lvc-tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Hide settings if it's not active and another tab is active */
+.lvc-admin-wrap #lvc-tab-settings:not(.active) {
+    display: none;
+    opacity: 0;
+}
+
+/* Fade in animation for smooth tab transitions */
+@keyframes lvcFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================================
+   STATISTICS SPECIFIC STYLES
+   ========================================================================= */
+
+.lvc-popular-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.lvc-post-type-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lvc-post-type-filter label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+    margin: 0;
+}
+
+.lvc-post-type-filter select {
+    min-width: 150px;
+}
+
+/* ============================================================================
+   TOOL BOX STYLES
+   ========================================================================= */
+
+.lvc-tool-box {
+    padding: 25px;
+    border-bottom: 1px solid #8882;
+}
+
+.lvc-tool-box:last-child {
+    margin-bottom: 0;
+}
+
+.lvc-tool-box h4 {
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.lvc-tool-box p {
+    margin: 0 0 15px 0;
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.lvc-import-textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+.lvc-import-textarea:focus {
+    outline: none;
+    border-color: #42b978;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.lvc-post-types-select {
+    min-width: 200px;
+}
+
+#lvc-reset-posts-input {
+    width: 100%;
+    max-width: 100% !important;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+}
+
+/* ============================================================================
+THEMERUBY SERVICES
+========================================================================= */
+
+.lvc-intro-services {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 15px;
+    padding: 25px;
+    color: #fff;
+    border-radius: 7px;
+    background: linear-gradient(45deg, #0008afdd, #db00ff);
+    margin-bottom: 20px;
+}
+
+.lvc-intro-themes {
+    margin-bottom: 30px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+}
+
+.lvc-intro-icon {
+    width: 65px;
+}
+
+h3.lvc-tips-headline {
+    color: #fff;
+    font-size: 20px;
+    margin: 0;
+}
+
+.lvc-intro-themes-header {
+    font-size: 18px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    gap: 7px;
+    letter-spacing: -.04em;
+}
+
+.lvc-tips-description {
+    margin-top: 7px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+a.lvc-btn {
+    display: inline-flex;
+    color: #fff;
+    background: #000;
+    text-decoration: none;
+    padding: 0 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    line-height: 36px;
+    font-weight: 600;
+    align-items: center;
+    gap: 7px;
+    transition: all .2s;
+    flex-shink: 0;
+}
+
+a.lvc-btn:hover,
+a.lvc-btn:focus {
+    background: #73ff56;
+    color: #000;
+    text-decoration: none;
+}
+
+a.lvc-btn-primary {
+    padding: 0 30px;
+    line-height: 48px;
+    font-size: 17px;
+}
+
+.lvc-intro-services .lvc-btn {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.lvc-themes-cards {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 30px;
+}
+
+.lvc-theme-card {
+    display: flex;
+    flex-flow: column nowrap;
+    max-width: 340px;
+    width: 100%;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #0001;
+    background: #fff;
+}
+
+.lvc-theme-card img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+.lvc-theme-content {
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: flex-start;
+}
+
+.lvc-theme-content h4 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.lvc-theme-tagline {
+    margin: 10px 0 0 0;
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+.lvc-btn .dashicons {
+    font-size: 12px;
+    line-height: 1;
+    height: auto;
+    width: auto;
+}
+
+/* ============================================================================
+CODE EXAMPLES (USAGE TAB)
+========================================================================= */
+
+.lvc-code-example {
+    padding: 20px 30px;
+    border-radius: 6px;
+}
+
+.lvc-code-example:last-child {
+    margin-bottom: 0;
+}
+
+.lvc-code-example h4 {
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.lvc-code-example code {
+    display: block;
+    padding: 15px;
+    background: #8881;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    overflow-x: auto;
+}
+
+.lvc-code-example p {
+    margin: 0;
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.lvc-code-example li {
+    list-style: none;
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media (max-width: 782px) {
+    .lvc-tab-navigation {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .lvc-tab-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .lvc-tab-btn .dashicons {
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+    }
+
+    .lvc-setting-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .lvc-setting-control {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .lvc-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lvc-action-buttons {
+        flex-direction: column;
+    }
+
+    .lvc-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .lvc-popular-header {
+        flex-direction: column;
+    }
+
+    .lvc-post-type-filter {
+        width: 100%;
+    }
+
+    .lvc-post-type-filter select {
+        flex: 1;
+    }
+
+    .lvc-intro-services {
+        flex-flow: column nowrap;
+        align-items: flex-start;
+    }
+
+    .lvc-intro-services .lvc-btn {
+        margin-left: 0;
+    }
+}
+
+/* ============================================================================
+   POST TYPE TAG SELECTION
+   ========================================================================= */
+
+.lvc-post-types-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.lvc-post-type-tag {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 20px;
+    background: #fff;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.lvc-post-type-tag:hover {
+    border-color: #42b978;
+    background: #42b978;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(66, 185, 120, 0.15);
+}
+
+.lvc-post-type-tag.active {
+    background: linear-gradient(135deg, #42b978 0%, #2d8a5f 100%);
+    border-color: #2d8a5f;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(66, 185, 120, 0.3);
+}
+
+.lvc-post-type-tag.active:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(66, 185, 120, 0.4);
+}
+
+.lvc-post-type-tag input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.lvc-post-type-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lvc-post-type-tag.active .lvc-post-type-label:before {
+    content: "✓";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 782px) {
+    .lvc-post-types-container {
+        gap: 8px;
+    }
+
+    .lvc-post-type-tag {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* ============================================================================
+   STATISTICS LOADING
+   ========================================================================= */
+
+.lvc-stats-loading {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.lvc-stats-loading .spinner {
+    float: none;
+    margin: 0 auto 15px;
+}
+
+.lvc-stats-loading p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* ============================================================================
+   IMPORT MIGRATION
+   ========================================================================= */
+
+.lvc-import-notice {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.lvc-import-notice p {
+    margin: 0;
+    color: #856404;
+}
+
+.lvc-import-progress {
+    display: none;
+    margin-bottom: 15px;
+}
+
+.lvc-import-progress.show {
+    display: block;
+}
+
+.lvc-progress-bar {
+    background: #e0e0e0;
+    border-radius: 4px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+#lvc-progress-fill {
+    background: #667eea;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+#lvc-progress-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+#lvc-import-status {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.lvc-import-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* ============================================================================
+   AJAX GENERATED TABLE STYLES
+   ========================================================================= */
+
+/* Center aligned table cells */
+.lvc-popular-table td:first-child,
+.lvc-popular-table td:last-child {
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Empty state for popular posts table */
+.lvc-popular-table .lvc-empty-state {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* Table loading state */
+.lvc-popular-table .lvc-table-loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.lvc-popular-table .lvc-table-loading .spinner {
+    float: none;
+    margin: 0;
+}

@@ -1,0 +1,76 @@
+/**
+ * Light Views Counter - Meta Box Styles
+ *
+ * Styles for the meta box in the post editor.
+ *
+ * @package LightViewsCounter
+ * @since 1.0.0
+ */
+
+/* Meta box container */
+.lvc-meta-box-content {
+	padding: 10px 0;
+}
+
+/* Current views display */
+.lvc-meta-box-content > p {
+	margin: 0 0 15px;
+}
+
+.lvc-meta-box-content strong {
+	display: block;
+	font-size: 12px;
+	color: #6b7280;
+	margin-bottom: 5px;
+}
+
+.lvc-meta-box-content > p > span {
+	display: block;
+	font-size: 20px;
+	font-weight: 700;
+	color: #667eea;
+	margin: 0;
+}
+
+/* Action button */
+.lvc-action-btn {
+	width: 100%;
+	justify-content: center;
+	padding: 4px;
+}
+
+.lvc-action-btn .dashicons {
+	font-size: 16px;
+	line-height: 1.6em;
+	margin-right: 2px;
+}
+
+/* Input container */
+#lvc-input-container {
+	display: none;
+	padding-top: 5px;
+}
+
+#lvc-input-container > p {
+	margin: 0 0 8px;
+}
+
+#lvc-input-container label {
+	font-weight: 600;
+	font-size: 13px;
+	color: #1e1e1e;
+}
+
+/* Input field */
+.lvc-setting-input {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+/* Description text */
+#lvc-input-container .description {
+	margin: 0 0 12px;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #6b7280;
+}
