@@ -66,6 +66,15 @@ class LIGHTVC_Counter {
 			return;
 		}
 
+		// Skip if post type is not supported
+		$supported_post_types = get_option( 'lightvc_supported_post_types', [ 'post' ] );
+		if ( ! is_array( $supported_post_types ) ) {
+			$supported_post_types = [ 'post' ];
+		}
+		if ( ! in_array( $post->post_type, $supported_post_types, true ) ) {
+			return;
+		}
+
 		// Enqueue the tracking script
 		wp_register_script(
 			'lvc-tracker',
@@ -83,7 +92,7 @@ class LIGHTVC_Counter {
 				'postId'          => $post->ID,
 				'ajaxUrl'         => rest_url( 'lightvc/v1/count' ),
 				'scrollThreshold' => min( 95, absint( get_option( 'lightvc_scroll_threshold', 50 ) ) ),
-				'timeWindow'      => absint( get_option( 'lightvc_time_window', 30 ) ),
+				'timeWindow'      => absint( get_option( 'lightvc_time_window', 1800 ) ),
 				'fastMode'        => (bool) get_option( 'lightvc_fast_mode', 0 ),
 				'excludeBots'     => (bool) get_option( 'lightvc_exclude_bots', 1 ),
 			]

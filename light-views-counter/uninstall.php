@@ -15,10 +15,20 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  *
  * This function completely removes all plugin data from the database
  * when the plugin is uninstalled (not just deactivated).
+ * Data is only deleted if the "Delete Data on Uninstall" option is enabled.
  */
 function lightvc_uninstall() {
 	// Security check: Verify user has capability to uninstall plugins.
 	if ( ! current_user_can( 'activate_plugins' ) ) {
+		return;
+	}
+
+	// Check if user has enabled data deletion on uninstall.
+	// Default is OFF to prevent accidental data loss.
+	$uninstall_data = get_option( 'lightvc_uninstall_data', 0 );
+
+	if ( ! $uninstall_data ) {
+		// User has not enabled data deletion, preserve all data.
 		return;
 	}
 
@@ -35,7 +45,12 @@ function lightvc_uninstall() {
 		'lightvc_enable_caching',
 		'lightvc_fast_mode',
 		'lightvc_show_views_on_content',
+		'lightvc_load_css_in_header',
 		'lightvc_enable_get_endpoint',
+		'lightvc_supported_post_types',
+		'lightvc_query_method',
+		'lightvc_exclude_bots',
+		'lightvc_uninstall_data',
 		'lightvc_db_version',
 	];
 

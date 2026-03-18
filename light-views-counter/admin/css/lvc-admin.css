@@ -15,7 +15,9 @@
     max-width: 1420px;
     margin: 30px auto;
     padding: 0 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+        sans-serif;
 }
 
 .lvc-admin-header {
@@ -71,7 +73,9 @@
     border-radius: 8px;
     color: #fff;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .lvc-stat-box:hover {
@@ -207,7 +211,7 @@
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.lvc-setting-input[type="number"] {
+.lvc-setting-input[type='number'] {
     width: 100px;
 }
 
@@ -252,7 +256,7 @@ select.lvc-setting-input {
 
 .lvc-toggle-slider:before {
     position: absolute;
-    content: "";
+    content: '';
     height: 20px;
     width: 20px;
     left: 3px;
@@ -322,7 +326,7 @@ select.lvc-setting-input {
 }
 
 .lvc-info-icon .lvc-tooltip:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 100%;
     left: 50%;
@@ -703,7 +707,6 @@ select.lvc-setting-input {
     font-size: 18px;
 }
 
-
 /* ============================================================================
    TAB CONTENT
    ========================================================================= */
@@ -879,7 +882,7 @@ h3.lvc-tips-headline {
     align-items: center;
     font-weight: 600;
     gap: 7px;
-    letter-spacing: -.04em;
+    letter-spacing: -0.04em;
 }
 
 .lvc-tips-description {
@@ -900,7 +903,7 @@ a.lvc-btn {
     font-weight: 600;
     align-items: center;
     gap: 7px;
-    transition: all .2s;
+    transition: all 0.2s;
     flex-shink: 0;
 }
 
@@ -1131,7 +1134,7 @@ CODE EXAMPLES (USAGE TAB)
     box-shadow: 0 6px 16px rgba(66, 185, 120, 0.4);
 }
 
-.lvc-post-type-tag input[type="checkbox"] {
+.lvc-post-type-tag input[type='checkbox'] {
     position: absolute;
     opacity: 0;
     width: 0;
@@ -1145,7 +1148,7 @@ CODE EXAMPLES (USAGE TAB)
 }
 
 .lvc-post-type-tag.active .lvc-post-type-label:before {
-    content: "✓";
+    content: '✓';
     display: inline-block;
     width: 16px;
     height: 16px;

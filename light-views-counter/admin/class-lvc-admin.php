@@ -36,9 +36,9 @@ class LIGHTVC_Admin {
 	 */
 	public static function init() {
 		add_action( 'admin_menu', [ __CLASS__, 'add_admin_menu' ], 1000 );
-		add_action( 'manage_posts_custom_column', [ __CLASS__, 'display_views_column' ], 10, 2 );
-		add_filter( 'manage_posts_columns', [ __CLASS__, 'add_views_column' ] );
-		add_filter( 'manage_edit-post_sortable_columns', [ __CLASS__, 'make_views_column_sortable' ] );
+
+		// Register column hooks for supported post types only.
+		add_action( 'admin_init', [ __CLASS__, 'register_column_hooks' ] );
 
 		// AJAX handlers
 		add_action( 'wp_ajax_lightvc_save_setting', [ __CLASS__, 'ajax_save_setting' ] );
@@ -62,12 +62,12 @@ class LIGHTVC_Admin {
 		if ( self::is_foxiz_core_active() ) {
 			// Add submenu under Foxiz Admin (same pattern as OpenAI Assistant)
 			self::$menu_id = add_submenu_page(
-					self::$parent_slug,
-					esc_html__( 'Light Views Counter', 'light-views-counter' ),
-					esc_html__( 'Light Views Counter', 'light-views-counter' ),
-					'manage_options',
-					'light-views-counter',
-					[ __CLASS__, 'render_settings_page' ]
+				self::$parent_slug,
+				esc_html__( 'Light Views Counter', 'light-views-counter' ),
+				esc_html__( 'Light Views Counter', 'light-views-counter' ),
+				'manage_options',
+				'light-views-counter',
+				[ __CLASS__, 'render_settings_page' ]
 			);
 
 			// Load assets only on our admin page
@@ -75,11 +75,11 @@ class LIGHTVC_Admin {
 		} else {
 			// Fallback: Add under Settings menu if Foxiz Core not active
 			self::$menu_id = add_options_page(
-					esc_html__( 'Light Views Counter Settings', 'light-views-counter' ),
-					esc_html__( 'Light Views Counter', 'light-views-counter' ),
-					'manage_options',
-					'light-views-counter',
-					[ __CLASS__, 'render_settings_page' ]
+				esc_html__( 'Light Views Counter Settings', 'light-views-counter' ),
+				esc_html__( 'Light Views Counter', 'light-views-counter' ),
+				'manage_options',
+				'light-views-counter',
+				[ __CLASS__, 'render_settings_page' ]
 			);
 
 			// Load assets only on our admin page
@@ -100,8 +100,34 @@ class LIGHTVC_Admin {
 
 		// Check multiple ways to detect Foxiz Core
 		return is_plugin_active( 'foxiz-core/foxiz-core.php' ) ||
-		       class_exists( 'Foxiz_Core' ) ||
-		       defined( 'FOXIZ_CORE_PATH' );
+				class_exists( 'Foxiz_Core' ) ||
+				defined( 'FOXIZ_CORE_PATH' );
+	}
+
+	/**
+	 * Register column hooks for supported post types only.
+	 *
+	 * This method dynamically registers column hooks based on the
+	 * lightvc_supported_post_types option, preventing the column
+	 * from appearing on unsupported post types.
+	 */
+	public static function register_column_hooks() {
+		$supported_post_types = get_option( 'lightvc_supported_post_types', [ 'post' ] );
+
+		if ( ! is_array( $supported_post_types ) || empty( $supported_post_types ) ) {
+			$supported_post_types = [ 'post' ];
+		}
+
+		foreach ( $supported_post_types as $post_type ) {
+			// Add column to posts list.
+			add_filter( "manage_{$post_type}_posts_columns", [ __CLASS__, 'add_views_column' ] );
+
+			// Display column content.
+			add_action( "manage_{$post_type}_posts_custom_column", [ __CLASS__, 'display_views_column' ], 10, 2 );
+
+			// Make column sortable.
+			add_filter( "manage_edit-{$post_type}_sortable_columns", [ __CLASS__, 'make_views_column_sortable' ] );
+		}
 	}
 
 	/**
@@ -169,12 +195,12 @@ class LIGHTVC_Admin {
 
 		// Localize script with AJAX data
 		wp_localize_script(
-				'lightvc-admin',
-				'lightvcAdmin',
-				[
-						'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-						'nonce'   => wp_create_nonce( 'lightvc_admin_nonce' ),
-				]
+			'lightvc-admin',
+			'lightvcAdmin',
+			[
+				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( 'lightvc_admin_nonce' ),
+			]
 		);
 	}
 
@@ -198,16 +224,17 @@ class LIGHTVC_Admin {
 
 		// Validate setting name
 		$allowed_settings = [
-				'lightvc_scroll_threshold',
-				'lightvc_time_window',
-				'lightvc_cache_duration',
-				'lightvc_enable_caching',
-				'lightvc_fast_mode',
-				'lightvc_show_views_on_content',
-				'lightvc_load_css_in_header',
-				'lightvc_enable_get_endpoint',
-				'lightvc_query_method',
-				'lightvc_exclude_bots',
+			'lightvc_scroll_threshold',
+			'lightvc_time_window',
+			'lightvc_cache_duration',
+			'lightvc_enable_caching',
+			'lightvc_fast_mode',
+			'lightvc_show_views_on_content',
+			'lightvc_load_css_in_header',
+			'lightvc_enable_get_endpoint',
+			'lightvc_query_method',
+			'lightvc_exclude_bots',
+			'lightvc_uninstall_data',
 		];
 
 		if ( ! in_array( $setting_name, $allowed_settings, true ) ) {
@@ -310,9 +337,12 @@ class LIGHTVC_Admin {
 
 		// Validate against registered public post types
 		$registered_types = array_keys( get_post_types( [ 'public' => true ] ) );
-		$value = array_filter( $value, function( $type ) use ( $registered_types ) {
-			return in_array( $type, $registered_types, true );
-		});
+		$value            = array_filter(
+			$value,
+			function ( $type ) use ( $registered_types ) {
+				return in_array( $type, $registered_types, true );
+			}
+		);
 
 		// Ensure at least 'post' is selected
 		if ( empty( $value ) ) {
@@ -379,13 +409,13 @@ class LIGHTVC_Admin {
 		foreach ( $ids as $post_id ) {
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$result = $wpdb->delete(
-					$table_name,
-					[ 'post_id' => $post_id ],
-					[ '%d' ]
+				$table_name,
+				[ 'post_id' => $post_id ],
+				[ '%d' ]
 			);
 
 			if ( $result ) {
-				$reset_count ++;
+				++$reset_count;
 				LIGHTVC_Cache::delete_post_cache( $post_id );
 			}
 		}
@@ -445,18 +475,18 @@ class LIGHTVC_Admin {
 
 		// Get popular posts
 		$posts = LIGHTVC_Database::get_popular_posts(
-				[
-						'limit'      => 10,
-						'date_range' => $date_range,
-						'post_type'  => $post_type,
-				]
+			[
+				'limit'      => 10,
+				'date_range' => $date_range,
+				'post_type'  => $post_type,
+			]
 		);
 
 		if ( empty( $posts ) ) {
 			wp_send_json_success(
-					[
-							'html' => '<tr><td colspan="5" class="lvc-empty-state">' . esc_html__( 'No posts found for this time period.', 'light-views-counter' ) . '</td></tr>',
-					]
+				[
+					'html' => '<tr><td colspan="5" class="lvc-empty-state">' . esc_html__( 'No posts found for this time period.', 'light-views-counter' ) . '</td></tr>',
+				]
 			);
 
 			return;
@@ -479,7 +509,7 @@ class LIGHTVC_Admin {
 			$html .= '<td>' . esc_html( $post_date ) . '</td>';
 			$html .= '<td>' . esc_html( $views ) . '</td>';
 			$html .= '</tr>';
-			$rank ++;
+			++$rank;
 		}
 
 		wp_send_json_success( [ 'html' => $html ] );
@@ -508,9 +538,9 @@ class LIGHTVC_Admin {
 		if ( 'reset' === $action_type ) {
 			self::reset_import_state();
 			wp_send_json_success(
-					[
-							'message' => esc_html__( 'Migration state has been reset. You can start a new migration.', 'light-views-counter' ),
-					]
+				[
+					'message' => esc_html__( 'Migration state has been reset. You can start a new migration.', 'light-views-counter' ),
+				]
 			);
 
 			return;
@@ -544,9 +574,9 @@ class LIGHTVC_Admin {
 		if ( ! $pvc_table_exists ) {
 			self::reset_import_state();
 			wp_send_json_error(
-					[
-							'message' => esc_html__( 'Post Views Counter database table not found. Make sure the Post Views Counter plugin is installed and has recorded view data.', 'light-views-counter' ),
-					]
+				[
+					'message' => esc_html__( 'Post Views Counter database table not found. Make sure the Post Views Counter plugin is installed and has recorded view data.', 'light-views-counter' ),
+				]
 			);
 
 			return;
@@ -556,19 +586,19 @@ class LIGHTVC_Admin {
 		if ( 0 === $offset ) {
 
 			// Table name is safe because it comes from $wpdb->prefix, a trusted source.
-			$total_posts_sql = "SELECT COUNT(DISTINCT id) FROM " . $pvc_table . " WHERE type = %d";
+			$total_posts_sql = 'SELECT COUNT(DISTINCT id) FROM ' . $pvc_table . ' WHERE type = %d';
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$total_posts = $wpdb->get_var(
-					$wpdb->prepare( $total_posts_sql, 4 ) //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				$wpdb->prepare( $total_posts_sql, 4 ) //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			);
 
 			if ( ! $total_posts || $total_posts < 1 ) {
 				self::reset_import_state();
 				wp_send_json_error(
-						[
-								'message' => esc_html__( 'No Post Views Counter data found. The post_views table exists but contains no view data.', 'light-views-counter' ),
-						]
+					[
+						'message' => esc_html__( 'No Post Views Counter data found. The post_views table exists but contains no view data.', 'light-views-counter' ),
+					]
 				);
 
 				return;
@@ -576,12 +606,12 @@ class LIGHTVC_Admin {
 
 			// Update state with total count
 			self::update_import_state(
-					[
-							'total_posts' => absint( $total_posts ),
-							'offset'      => 0,
-							'imported'    => 0,
-							'failed'      => 0,
-					]
+				[
+					'total_posts' => absint( $total_posts ),
+					'offset'      => 0,
+					'imported'    => 0,
+					'failed'      => 0,
+				]
 			);
 		}
 
@@ -598,13 +628,13 @@ class LIGHTVC_Admin {
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$pvc_posts = $wpdb->get_results(
-				$wpdb->prepare(
-						$pvc_posts_sql, //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-						4,           // total views column
-						$batch_size, // limit
-						$offset      // offset
-				),
-				ARRAY_A
+			$wpdb->prepare(
+				$pvc_posts_sql, //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				4,           // total views column
+				$batch_size, // limit
+				$offset      // offset
+			),
+			ARRAY_A
 		);
 
 		// If no posts found, import is complete
@@ -613,19 +643,19 @@ class LIGHTVC_Admin {
 			self::complete_import();
 
 			wp_send_json_success(
-					[
-							'complete' => true,
-							'message'  => sprintf(
-							/* translators: 1: Number of successfully imported posts, 2: Total number of posts, 3: Number of failed imports */
-									esc_html__( 'Migration completed! Successfully migrated %1$d of %2$d posts. %3$d failed.', 'light-views-counter' ),
-									$import_state['imported'],
-									$import_state['total_posts'],
-									$import_state['failed']
-							),
-							'imported' => $import_state['imported'],
-							'total'    => $import_state['total_posts'],
-							'failed'   => $import_state['failed'],
-					]
+				[
+					'complete' => true,
+					'message'  => sprintf(
+					/* translators: 1: Number of successfully imported posts, 2: Total number of posts, 3: Number of failed imports */
+						esc_html__( 'Migration completed! Successfully migrated %1$d of %2$d posts. %3$d failed.', 'light-views-counter' ),
+						$import_state['imported'],
+						$import_state['total_posts'],
+						$import_state['failed']
+					),
+					'imported' => $import_state['imported'],
+					'total'    => $import_state['total_posts'],
+					'failed'   => $import_state['failed'],
+				]
 			);
 
 			return;
@@ -641,13 +671,13 @@ class LIGHTVC_Admin {
 
 			// Validate post ID and views
 			if ( ! $post_id || ! $views ) {
-				$failed_batch ++;
+				++$failed_batch;
 				continue;
 			}
 
 			// Verify post exists in WordPress
 			if ( ! get_post( $post_id ) ) {
-				$failed_batch ++;
+				++$failed_batch;
 				continue;
 			}
 
@@ -660,19 +690,20 @@ class LIGHTVC_Admin {
 			// Insert or update view count in Light Views Counter database
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$result = $wpdb->query(
-					$wpdb->prepare( $lightvc_insert_sql,  //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-							$post_id,
-							$views,
-							$views
-					)
+				$wpdb->prepare(
+					$lightvc_insert_sql,  //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+					$post_id,
+					$views,
+					$views
+				)
 			);
 
 			if ( $result ) {
-				$imported_batch ++;
+				++$imported_batch;
 				// Clear cache for this post
 				LIGHTVC_Cache::delete_post_cache( $post_id );
 			} else {
-				$failed_batch ++;
+				++$failed_batch;
 			}
 		}
 
@@ -683,11 +714,11 @@ class LIGHTVC_Admin {
 		$total_failed   = $import_state['failed'] + $failed_batch;
 
 		self::update_import_state(
-				[
-						'offset'   => $new_offset,
-						'imported' => $total_imported,
-						'failed'   => $total_failed,
-				]
+			[
+				'offset'   => $new_offset,
+				'imported' => $total_imported,
+				'failed'   => $total_failed,
+			]
 		);
 
 		// Calculate progress
@@ -696,22 +727,22 @@ class LIGHTVC_Admin {
 
 		// Return batch results
 		wp_send_json_success(
-				[
-						'complete'   => false,
-						'progress'   => $progress,
-						'imported'   => $total_imported,
-						'failed'     => $total_failed,
-						'total'      => $total_posts,
-						'offset'     => $new_offset,
-						'batch_size' => count( $pvc_posts ),
-						'message'    => sprintf(
-						/* translators: 1: Progress percentage, 2: Number imported, 3: Total posts */
-								esc_html__( 'Migrating... %1$d%% complete (%2$d / %3$d posts)', 'light-views-counter' ),
-								$progress,
-								$total_imported,
-								$total_posts
-						),
-				]
+			[
+				'complete'   => false,
+				'progress'   => $progress,
+				'imported'   => $total_imported,
+				'failed'     => $total_failed,
+				'total'      => $total_posts,
+				'offset'     => $new_offset,
+				'batch_size' => count( $pvc_posts ),
+				'message'    => sprintf(
+				/* translators: 1: Progress percentage, 2: Number imported, 3: Total posts */
+					esc_html__( 'Migrating... %1$d%% complete (%2$d / %3$d posts)', 'light-views-counter' ),
+					$progress,
+					$total_imported,
+					$total_posts
+				),
+			]
 		);
 	}
 
@@ -741,12 +772,12 @@ class LIGHTVC_Admin {
 	 */
 	private static function initialize_import_state() {
 		$state = [
-				'status'      => 'in_progress',
-				'total_posts' => 0,
-				'offset'      => 0,
-				'imported'    => 0,
-				'failed'      => 0,
-				'started_at'  => current_time( 'mysql' ),
+			'status'      => 'in_progress',
+			'total_posts' => 0,
+			'offset'      => 0,
+			'imported'    => 0,
+			'failed'      => 0,
+			'started_at'  => current_time( 'mysql' ),
 		];
 
 		update_option( 'lightvc_pvc_import_state', $state, false );
@@ -798,9 +829,9 @@ class LIGHTVC_Admin {
 		// Security check: Verify user capabilities
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die(
-					esc_html__( 'You do not have sufficient permissions to access this page.', 'light-views-counter' ),
-					esc_html__( 'Access Denied', 'light-views-counter' ),
-					[ 'response' => 403 ]
+				esc_html__( 'You do not have sufficient permissions to access this page.', 'light-views-counter' ),
+				esc_html__( 'Access Denied', 'light-views-counter' ),
+				[ 'response' => 403 ]
 			);
 		}
 
@@ -821,6 +852,7 @@ class LIGHTVC_Admin {
 		$supported_post_types  = get_option( 'lightvc_supported_post_types', [ 'post' ] );
 		$query_method          = get_option( 'lightvc_query_method', 'subquery' );
 		$exclude_bots          = get_option( 'lightvc_exclude_bots', 1 );
+		$uninstall_data        = get_option( 'lightvc_uninstall_data', 0 );
 		?>
 		<div class="lvc-admin-wrap">
 			<!-- Header -->
@@ -902,28 +934,28 @@ class LIGHTVC_Admin {
 									$all_post_types = get_post_types( [ 'public' => true ], 'objects' );
 
 									$excluded_types = [
-											'attachment',     // Media uploads
-											'revision',       // Post revisions
-											'nav_menu_item',  // Menu items
-											'custom_css',     // Customizer CSS
-											'customize_changeset', // Customizer drafts
-											'oembed_cache',   // Embed cache
-											'rb-etemplate', // ruby template
-											'user_request',   // Privacy requests
-											'wp_block',       // Block patterns
-											'wp_template',    // Full site editing templates
-											'wp_template_part',
-											'wp_navigation',
-											'elementor_library', // Elementor templates
-											'e-floating-buttons', // Elementor floating
-											'fl-builder-template', // Beaver Builder
-											'ct_template',    // Blocksy, Kadence, etc.
-											'wpcf7_contact_form', // Contact Form 7
-											'product_variation',  // WooCommerce
-											'shop_order',
-											'shop_coupon',
-											'shop_order_refund',
-											'shop_subscription',
+										'attachment',     // Media uploads
+										'revision',       // Post revisions
+										'nav_menu_item',  // Menu items
+										'custom_css',     // Customizer CSS
+										'customize_changeset', // Customizer drafts
+										'oembed_cache',   // Embed cache
+										'rb-etemplate', // ruby template
+										'user_request',   // Privacy requests
+										'wp_block',       // Block patterns
+										'wp_template',    // Full site editing templates
+										'wp_template_part',
+										'wp_navigation',
+										'elementor_library', // Elementor templates
+										'e-floating-buttons', // Elementor floating
+										'fl-builder-template', // Beaver Builder
+										'ct_template',    // Blocksy, Kadence, etc.
+										'wpcf7_contact_form', // Contact Form 7
+										'product_variation',  // WooCommerce
+										'shop_order',
+										'shop_coupon',
+										'shop_order_refund',
+										'shop_subscription',
 									];
 
 									foreach ( $all_post_types as $post_type ) :
@@ -966,7 +998,7 @@ class LIGHTVC_Admin {
 								</div>
 							</div>
 							<div class="lvc-setting-control">
-								<input type="number" id="lightvc_time_window" name="lightvc_time_window" value="<?php echo esc_attr( $time_window ); ?>" min="1" class="lvc-setting-input" />
+								<input type="number" id="lightvc_time_window" name="lightvc_time_window" value="<?php echo esc_attr( $time_window ); ?>" min="0" class="lvc-setting-input" />
 							</div>
 						</div>
 						<!-- Fast Mode -->
@@ -1110,8 +1142,8 @@ class LIGHTVC_Admin {
 									<?php
 									printf(
 									/* translators: %s: REST API URL example */
-											esc_html__( 'Allow retrieving view counts via REST API for third-party application: %s', 'light-views-counter' ),
-											esc_html( site_url( '/wp-json/lightvc/v1/views/{postID}' ) )
+										esc_html__( 'Allow retrieving view counts via REST API for third-party application: %s', 'light-views-counter' ),
+										esc_html( site_url( '/wp-json/lightvc/v1/views/{postID}' ) )
 									);
 									?>
 								</span>
@@ -1120,6 +1152,31 @@ class LIGHTVC_Admin {
 							<div class="lvc-setting-control">
 								<label class="lvc-toggle-switch">
 									<input type="checkbox" id="lightvc_enable_get_endpoint" name="lightvc_enable_get_endpoint" value="1" <?php checked( $enable_get_endpoint, 1 ); ?> />
+									<span class="lvc-toggle-slider"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Uninstall Settings -->
+				<div class="lvc-settings-section">
+					<div class="lvc-section-header">
+						<h3><?php esc_html_e( 'Uninstall Settings', 'light-views-counter' ); ?></h3>
+					</div>
+					<div class="lvc-section-body">
+						<!-- Uninstall Data -->
+						<div class="lvc-setting-row">
+							<div class="lvc-setting-label">
+								<div>
+									<label for="lightvc_uninstall_data"><?php esc_html_e( 'Delete Data on Uninstall', 'light-views-counter' ); ?></label>
+									<span class="description">
+									<?php esc_html_e( 'When enabled, all plugin data (database table, options, and transients) will be permanently deleted when the plugin is uninstalled. Keep this OFF to preserve your view count data if you plan to reinstall the plugin later.', 'light-views-counter' ); ?>
+									</span>
+								</div>
+							</div>
+							<div class="lvc-setting-control">
+								<label class="lvc-toggle-switch">
+									<input type="checkbox" id="lightvc_uninstall_data" name="lightvc_uninstall_data" value="1" <?php checked( $uninstall_data, 1 ); ?> />
 									<span class="lvc-toggle-slider"></span>
 								</label>
 							</div>
@@ -1158,10 +1215,10 @@ class LIGHTVC_Admin {
 										<?php
 										printf(
 										/* translators: 1: Number of imported posts, 2: Total posts, 3: Progress percentage */
-												esc_html__( '%1$d of %2$d posts migrated (%3$d%%)', 'light-views-counter' ),
-												esc_html( $import_state['imported'] ),
-												esc_html( $import_state['total_posts'] ),
-												esc_html( $progress )
+											esc_html__( '%1$d of %2$d posts migrated (%3$d%%)', 'light-views-counter' ),
+											esc_html( $import_state['imported'] ),
+											esc_html( $import_state['total_posts'] ),
+											esc_html( $progress )
 										);
 										?>
 									</p>
@@ -1427,6 +1484,4 @@ class LIGHTVC_Admin {
 		</div>
 		<?php
 	}
-
-
 }

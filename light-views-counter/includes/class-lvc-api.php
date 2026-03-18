@@ -92,7 +92,17 @@ class LIGHTVC_Base_API {
 
 		$post = get_post( $post_id );
 
-		return $post && 'publish' === $post->post_status;
+		if ( ! $post || 'publish' !== $post->post_status ) {
+			return false;
+		}
+
+		// Check if post type is supported
+		$supported_post_types = get_option( 'lightvc_supported_post_types', [ 'post' ] );
+		if ( ! is_array( $supported_post_types ) ) {
+			$supported_post_types = [ 'post' ];
+		}
+
+		return in_array( $post->post_type, $supported_post_types, true );
 	}
 
 	/**
@@ -221,11 +231,11 @@ class LIGHTVC_Base_API {
 		$ip_address = self::get_client_ip();
 		$cache_key  = self::RATE_LIMIT_PREFIX . $post_id . '_' . md5( $ip_address );
 
-		// Get time window from settings (in minutes)
-		$time_window = absint( get_option( 'lightvc_time_window', 30 ) );
+		// Get time window from settings (in seconds)
+		$time_window = absint( get_option( 'lightvc_time_window', 1800 ) );
 
-		// Set transient for the time window
-		return wp_cache_set( $cache_key, time(), 'lightvc', $time_window * 60 );
+		// Set cache for the time window (value is already in seconds)
+		return wp_cache_set( $cache_key, time(), 'lightvc', $time_window );
 	}
 
 	/**

@@ -206,8 +206,8 @@ class LIGHTVC_Query {
 		// Prepare placeholders for IN ( %d, %d, %d ...)
 		$placeholders = implode( ', ', array_fill( 0, count( $post_ids ), '%d' ) );
 
-		$sql = "SELECT post_id, view_count 
-        FROM {$wpdb->prefix}lightvc_post_views 
+		$sql = "SELECT post_id, view_count
+        FROM {$wpdb->prefix}lightvc_post_views
         WHERE post_id IN ($placeholders)";
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching

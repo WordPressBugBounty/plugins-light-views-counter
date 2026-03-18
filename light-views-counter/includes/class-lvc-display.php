@@ -30,14 +30,33 @@ class LIGHTVC_Display {
 	 * @var array
 	 */
 	public static $allowed_html = [
-		'div'    => [ 'class' => true, 'id' => true, 'style' => true ],
-		'span'   => [ 'class' => true, 'id' => true, 'style' => true ],
+		'div'    => [
+			'class' => true,
+			'id'    => true,
+			'style' => true,
+		],
+		'span'   => [
+			'class' => true,
+			'id'    => true,
+			'style' => true,
+		],
 		'strong' => [ 'class' => true ],
 		'b'      => [],
 		'i'      => [ 'class' => true ],
 		'em'     => [],
-		'a'      => [ 'href' => true, 'title' => true, 'class' => true, 'rel' => true, 'target' => true ],
-		'svg'    => [ 'class' => true, 'fill' => true, 'viewbox' => true, 'xmlns' => true ],
+		'a'      => [
+			'href'   => true,
+			'title'  => true,
+			'class'  => true,
+			'rel'    => true,
+			'target' => true,
+		],
+		'svg'    => [
+			'class'   => true,
+			'fill'    => true,
+			'viewbox' => true,
+			'xmlns'   => true,
+		],
 		'path'   => [ 'd' => true ],
 	];
 

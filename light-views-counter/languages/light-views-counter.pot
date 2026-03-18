@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Light Views Counter\n"
-"POT-Creation-Date: 2025-11-01 15:51+0700\n"
+"POT-Creation-Date: 2026-03-18 09:27+0700\n"
 "PO-Revision-Date: 2017-07-16 09:08+0700\n"
 "Last-Translator: \n"
 "Language-Team: ThemeRuby <support@themeruby.com>\n"
@@ -10,25 +10,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _x;__;_e;_nx:1,2;esc_html__;esc_html_e;esc_attr__;esc_attr_e\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin/class-lvc-admin-stats.php:38 admin/class-lvc-admin.php:192 admin/class-lvc-admin.php:275
-#: admin/class-lvc-admin.php:330 admin/class-lvc-admin.php:351 admin/class-lvc-admin.php:404 admin/class-lvc-admin.php:428
-#: admin/class-lvc-admin.php:494
+#: admin/class-lvc-admin-stats.php:38 admin/class-lvc-admin.php:218 admin/class-lvc-admin.php:302
+#: admin/class-lvc-admin.php:366 admin/class-lvc-admin.php:387 admin/class-lvc-admin.php:440 admin/class-lvc-admin.php:464
+#: admin/class-lvc-admin.php:530
 msgid "Permission denied."
 msgstr ""
 
-#: admin/class-lvc-admin-stats.php:51 admin/class-lvc-admin.php:831
+#: admin/class-lvc-admin-stats.php:51 admin/class-lvc-admin.php:869
 msgid "Statistics"
 msgstr ""
 
-#: admin/class-lvc-admin-stats.php:55 includes/class-lvc-display.php:115
+#: admin/class-lvc-admin-stats.php:55 includes/class-lvc-display.php:151
 msgid "Total Views"
 msgstr ""
 
@@ -108,11 +108,11 @@ msgstr ""
 msgid "Publish Date"
 msgstr ""
 
-#: admin/class-lvc-admin-stats.php:114 includes/class-lvc-shortcode.php:69
+#: admin/class-lvc-admin-stats.php:114 includes/class-lvc-shortcode.php:86
 msgid "Views"
 msgstr ""
 
-#: admin/class-lvc-admin.php:66 admin/class-lvc-admin.php:67 admin/class-lvc-admin.php:79 admin/class-lvc-admin.php:822
+#: admin/class-lvc-admin.php:66 admin/class-lvc-admin.php:67 admin/class-lvc-admin.php:79 admin/class-lvc-admin.php:860
 msgid "Light Views Counter"
 msgstr ""
 
@@ -120,475 +120,489 @@ msgstr ""
 msgid "Light Views Counter Settings"
 msgstr ""
 
-#: admin/class-lvc-admin.php:115
+#: admin/class-lvc-admin.php:141
 msgid "Light Views"
 msgstr ""
 
-#: admin/class-lvc-admin.php:214
+#: admin/class-lvc-admin.php:241
 msgid "Invalid setting name."
 msgstr ""
 
-#: admin/class-lvc-admin.php:230
+#: admin/class-lvc-admin.php:257
 msgid "Setting saved successfully."
 msgstr ""
 
-#: admin/class-lvc-admin.php:232
+#: admin/class-lvc-admin.php:259
 msgid "Failed to save setting."
 msgstr ""
 
-#: admin/class-lvc-admin.php:289
+#: admin/class-lvc-admin.php:316
 msgid "Post types saved successfully."
 msgstr ""
 
-#: admin/class-lvc-admin.php:291
+#: admin/class-lvc-admin.php:318
 msgid "Failed to save post types."
 msgstr ""
 
-#: admin/class-lvc-admin.php:336
+#: admin/class-lvc-admin.php:372
 msgid "Cache cleared successfully!"
 msgstr ""
 
-#: admin/class-lvc-admin.php:358
+#: admin/class-lvc-admin.php:394
 msgid "No post IDs provided."
 msgstr ""
 
-#: admin/class-lvc-admin.php:366
+#: admin/class-lvc-admin.php:402
 msgid "Invalid post IDs."
 msgstr ""
 
-#: admin/class-lvc-admin.php:388
+#: admin/class-lvc-admin.php:424
 #, php-format
 msgid "Successfully reset %d posts."
 msgstr ""
 
-#: admin/class-lvc-admin.php:411
+#: admin/class-lvc-admin.php:447
 msgid "All view counts have been reset."
 msgstr ""
 
-#: admin/class-lvc-admin.php:413
+#: admin/class-lvc-admin.php:449
 msgid "Failed to reset views."
 msgstr ""
 
-#: admin/class-lvc-admin.php:452
+#: admin/class-lvc-admin.php:488
 msgid "No posts found for this time period."
 msgstr ""
 
-#: admin/class-lvc-admin.php:506
+#: admin/class-lvc-admin.php:542
 msgid "Migration state has been reset. You can start a new migration."
 msgstr ""
 
-#: admin/class-lvc-admin.php:542
+#: admin/class-lvc-admin.php:578
 msgid ""
 "Post Views Counter database table not found. Make sure the Post Views Counter plugin is installed and has recorded view "
 "data."
 msgstr ""
 
-#: admin/class-lvc-admin.php:564
+#: admin/class-lvc-admin.php:600
 msgid "No Post Views Counter data found. The post_views table exists but contains no view data."
 msgstr ""
 
-#: admin/class-lvc-admin.php:614
+#: admin/class-lvc-admin.php:650
 #, php-format
 msgid "Migration completed! Successfully migrated %1$d of %2$d posts. %3$d failed."
 msgstr ""
 
-#: admin/class-lvc-admin.php:703
+#: admin/class-lvc-admin.php:740
 #, php-format
 msgid "Migrating... %1$d%% complete (%2$d / %3$d posts)"
 msgstr ""
 
-#: admin/class-lvc-admin.php:795
+#: admin/class-lvc-admin.php:832
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: admin/class-lvc-admin.php:796
+#: admin/class-lvc-admin.php:833
 msgid "Access Denied"
 msgstr ""
 
-#: admin/class-lvc-admin.php:823
+#: admin/class-lvc-admin.php:861
 msgid "Simple, lightweight post views tracking optimized for high-traffic and large post database WordPress sites."
 msgstr ""
 
-#: admin/class-lvc-admin.php:827 admin/class-lvc-links.php:40
+#: admin/class-lvc-admin.php:865 admin/class-lvc-links.php:40
 msgid "Settings"
 msgstr ""
 
-#: admin/class-lvc-admin.php:835
+#: admin/class-lvc-admin.php:873
 msgid "Tools"
 msgstr ""
 
-#: admin/class-lvc-admin.php:839
+#: admin/class-lvc-admin.php:877
 msgid "Usage"
 msgstr ""
 
-#: admin/class-lvc-admin.php:848
+#: admin/class-lvc-admin.php:886
 msgid "Custom Web Design & Development Services"
 msgstr ""
 
-#: admin/class-lvc-admin.php:849
+#: admin/class-lvc-admin.php:887
 msgid "We design and build stunning, easy-to-use websites that reflect your vision and help you reach your goals."
 msgstr ""
 
-#: admin/class-lvc-admin.php:851
+#: admin/class-lvc-admin.php:889
 msgid "Get Free Quote"
 msgstr ""
 
-#: admin/class-lvc-admin.php:854
+#: admin/class-lvc-admin.php:893
 msgid "Premium News/Magazine Themes"
 msgstr ""
 
-#: admin/class-lvc-admin.php:856
+#: admin/class-lvc-admin.php:895
 msgid "Foxiz Theme"
 msgstr ""
 
-#: admin/class-lvc-admin.php:859
+#: admin/class-lvc-admin.php:898
 msgid "Foxiz"
 msgstr ""
 
-#: admin/class-lvc-admin.php:860
+#: admin/class-lvc-admin.php:899
 msgid "Newspaper News and Magazine WordPress Theme"
 msgstr ""
 
-#: admin/class-lvc-admin.php:862 admin/class-lvc-admin.php:870
+#: admin/class-lvc-admin.php:901 admin/class-lvc-admin.php:909
 msgid "Learn More"
 msgstr ""
 
-#: admin/class-lvc-admin.php:864
+#: admin/class-lvc-admin.php:903
 msgid "Pixwell Theme"
 msgstr ""
 
-#: admin/class-lvc-admin.php:867
+#: admin/class-lvc-admin.php:906
 msgid "Pixwell"
 msgstr ""
 
-#: admin/class-lvc-admin.php:868
+#: admin/class-lvc-admin.php:907
 msgid "Magazine WordPress Theme"
 msgstr ""
 
-#: admin/class-lvc-admin.php:880
+#: admin/class-lvc-admin.php:920
 msgid "Tracking Settings"
 msgstr ""
 
-#: admin/class-lvc-admin.php:887
+#: admin/class-lvc-admin.php:927
 msgid "Supported Post Types"
 msgstr ""
 
-#: admin/class-lvc-admin.php:888
+#: admin/class-lvc-admin.php:928
 msgid "Select which post types should track view counts."
 msgstr ""
 
-#: admin/class-lvc-admin.php:944
+#: admin/class-lvc-admin.php:984
 msgid "Scroll Threshold"
 msgstr ""
 
-#: admin/class-lvc-admin.php:945
+#: admin/class-lvc-admin.php:985
 msgid "Percentage of page that must be scrolled before counting a view. Set to 0 to count immediately."
 msgstr ""
 
-#: admin/class-lvc-admin.php:956
+#: admin/class-lvc-admin.php:996
 msgid "Time Window (seconds)"
 msgstr ""
 
-#: admin/class-lvc-admin.php:957
+#: admin/class-lvc-admin.php:997
 msgid ""
 "Seconds to wait before counting another view from the same user (uses localStorage). Example: 1800 = 30 minutes, 3600 = "
 "1 hour."
 msgstr ""
 
-#: admin/class-lvc-admin.php:968
+#: admin/class-lvc-admin.php:1008
 msgid "Fast Mode"
 msgstr ""
 
-#: admin/class-lvc-admin.php:969
+#: admin/class-lvc-admin.php:1009
 msgid "Use sendBeacon API for fire-and-forget tracking. Improves performance for high-traffic sites."
 msgstr ""
 
-#: admin/class-lvc-admin.php:983
+#: admin/class-lvc-admin.php:1023
 msgid "Exclude Bots"
 msgstr ""
 
-#: admin/class-lvc-admin.php:984
+#: admin/class-lvc-admin.php:1024
 msgid "Bypass view counting for search engine bots and web crawlers. Helps ensure accurate human visitor statistics."
 msgstr ""
 
-#: admin/class-lvc-admin.php:999
+#: admin/class-lvc-admin.php:1039
 msgid "Performance Settings"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1006
+#: admin/class-lvc-admin.php:1046
 msgid "Enable Caching"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1007
+#: admin/class-lvc-admin.php:1047
 msgid "Cache view counts using WordPress Cache for better performance."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1021
+#: admin/class-lvc-admin.php:1061
 msgid "Cache Duration (seconds)"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1022
+#: admin/class-lvc-admin.php:1062
 msgid "How long to cache view counts. Set to 0 to disable caching."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1033
+#: admin/class-lvc-admin.php:1073
 msgid "Query Method"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1035
+#: admin/class-lvc-admin.php:1075
 msgid ""
 "Used to query popular posts in widgets. Subquery: Simple, recommended for <100k posts. JOIN: Optimized for large "
 "databases (100k+ posts)."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1042
+#: admin/class-lvc-admin.php:1082
 msgid "Subquery (Default)"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1045
+#: admin/class-lvc-admin.php:1085
 msgid "JOIN (Large Databases)"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1055
+#: admin/class-lvc-admin.php:1095
 msgid "Display Settings"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1062
+#: admin/class-lvc-admin.php:1102
 msgid "Show Views on Content"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1063
+#: admin/class-lvc-admin.php:1103
 msgid "Automatically display view count at the end of each post."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1077
+#: admin/class-lvc-admin.php:1117
 msgid "Load CSS in Header"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1078
+#: admin/class-lvc-admin.php:1118
 msgid ""
 "Enqueue CSS styles in the header for shortcode and display usage. Enable this if you use [lightvc_post_views] shortcode "
 "or display functions."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1093
+#: admin/class-lvc-admin.php:1133
 msgid "API Settings"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1100
+#: admin/class-lvc-admin.php:1140
 msgid "Enable GET Endpoint"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1105
+#: admin/class-lvc-admin.php:1145
 #, php-format
 msgid "Allow retrieving view counts via REST API for third-party application: %s"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1127
+#: admin/class-lvc-admin.php:1164
+msgid "Uninstall Settings"
+msgstr ""
+
+#: admin/class-lvc-admin.php:1171
+msgid "Delete Data on Uninstall"
+msgstr ""
+
+#: admin/class-lvc-admin.php:1173
+msgid ""
+"When enabled, all plugin data (database table, options, and transients) will be permanently deleted when the plugin is "
+"uninstalled. Keep this OFF to preserve your view count data if you plan to reinstall the plugin later."
+msgstr ""
+
+#: admin/class-lvc-admin.php:1192
 msgid "Loading statistics..."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1135
+#: admin/class-lvc-admin.php:1200
 msgid "Migrate Data"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1139
+#: admin/class-lvc-admin.php:1204
 msgid "Migrate from Post Views Counter Plugin"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1140
+#: admin/class-lvc-admin.php:1205
 msgid "Automatically migrate view count data from the Post Views Counter plugin."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1149
+#: admin/class-lvc-admin.php:1214
 msgid "Migration in progress:"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1153
+#: admin/class-lvc-admin.php:1218
 #, php-format
 msgid "%1$d of %2$d posts migrated (%3$d%%)"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1176
+#: admin/class-lvc-admin.php:1241
 msgid "Resume Migration"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1178
+#: admin/class-lvc-admin.php:1243
 msgid "Migrate Data from Post View Counter Plugin"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1185
+#: admin/class-lvc-admin.php:1250
 msgid "Reset Migration"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1195
+#: admin/class-lvc-admin.php:1260
 msgid "Maintenance"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1199 admin/class-lvc-admin.php:1203
+#: admin/class-lvc-admin.php:1264 admin/class-lvc-admin.php:1268
 msgid "Clear Cache"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1200
+#: admin/class-lvc-admin.php:1265
 msgid "Clear all cached view counts. Use this if you are seeing stale data."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1207
+#: admin/class-lvc-admin.php:1272
 msgid "Reset Specific Posts"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1208
+#: admin/class-lvc-admin.php:1273
 msgid "Reset view counts for specific posts. Enter post IDs or titles below (comma-separated)."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1209
+#: admin/class-lvc-admin.php:1274
 msgid "Enter post IDs: 123, 456, 789"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1212
+#: admin/class-lvc-admin.php:1277
 msgid "Reset Selected Posts"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1216 admin/class-lvc-admin.php:1220
+#: admin/class-lvc-admin.php:1281 admin/class-lvc-admin.php:1285
 msgid "Reset All Views"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1217
+#: admin/class-lvc-admin.php:1282
 msgid "Reset all view counts for all posts. This action cannot be undone!"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1230
+#: admin/class-lvc-admin.php:1295
 msgid "Widget Usage"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1234
+#: admin/class-lvc-admin.php:1299
 msgid "Popular Posts Widget"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1238
+#: admin/class-lvc-admin.php:1303
 msgid ""
 "Add the Popular Posts widget to your sidebar or footer to display the most viewed posts automatically. Supports "
 "multiple display options and date ranges."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1244
+#: admin/class-lvc-admin.php:1309
 msgid "Template Tags"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1248
+#: admin/class-lvc-admin.php:1313
 msgid "Display Views with Shortcode"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1273
+#: admin/class-lvc-admin.php:1338
 msgid "Display view counts anywhere using this flexible shortcode. Supports multiple parameters:"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1275
+#: admin/class-lvc-admin.php:1340
 msgid "Available Parameters:"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1276
+#: admin/class-lvc-admin.php:1341
 msgid "Specific post ID (default: current post)"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1277
+#: admin/class-lvc-admin.php:1342
 msgid "Display style: default, minimal, badge, compact"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1278
+#: admin/class-lvc-admin.php:1343
 msgid "Custom label text (default: \"Views\")"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1279
+#: admin/class-lvc-admin.php:1344
 msgid "Show/hide label: true or false (default: true)"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1283
+#: admin/class-lvc-admin.php:1348
 msgid "Get Post Views"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1285
+#: admin/class-lvc-admin.php:1350
 msgid "Returns the view count for a specific post. If no post ID is provided, uses the current post."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1288
+#: admin/class-lvc-admin.php:1353
 msgid "Get Popular Posts"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1298
+#: admin/class-lvc-admin.php:1363
 msgid "Get an array of popular posts based on view count. Supports date range filtering and post type selection."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1301
+#: admin/class-lvc-admin.php:1366
 msgid "Display Popular Posts"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1314
+#: admin/class-lvc-admin.php:1379
 msgid "Loop through popular posts and display them with view counts."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1320
+#: admin/class-lvc-admin.php:1385
 msgid "Query Integration"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1324
+#: admin/class-lvc-admin.php:1389
 msgid "Order Posts by Views in WP_Query"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1335
+#: admin/class-lvc-admin.php:1400
 msgid "Order posts by view count in any custom query using the orderby parameter."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1338
+#: admin/class-lvc-admin.php:1403
 msgid "Filter Posts by Minimum Views"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1357
+#: admin/class-lvc-admin.php:1422
 msgid "Get only posts with a minimum number of views using meta_query."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1363
+#: admin/class-lvc-admin.php:1428
 msgid "REST API"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1367
+#: admin/class-lvc-admin.php:1432
 msgid "Get Views via REST API"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1374
+#: admin/class-lvc-admin.php:1439
 msgid ""
 "Retrieve view counts via REST API for third-party applications. This endpoint is currently ENABLED in your settings."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1376
+#: admin/class-lvc-admin.php:1441
 msgid "Retrieve view counts via REST API for third-party applications. Enable this endpoint in the API Settings section."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1382
+#: admin/class-lvc-admin.php:1447
 msgid "Track Views via REST API"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1387
+#: admin/class-lvc-admin.php:1452
 msgid "Track views via REST API. Respects your tracking settings (scroll threshold, time window, bot detection)."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1393
+#: admin/class-lvc-admin.php:1458
 msgid "Filters & Hooks"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1397
+#: admin/class-lvc-admin.php:1462
 msgid "Modify View Count Output"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1404
+#: admin/class-lvc-admin.php:1469
 msgid "Filter the view count before it is displayed or returned by template tags."
 msgstr ""
 
-#: admin/class-lvc-admin.php:1407
+#: admin/class-lvc-admin.php:1472
 msgid "Custom Display Format"
 msgstr ""
 
-#: admin/class-lvc-admin.php:1414
+#: admin/class-lvc-admin.php:1479
 msgid "Customize the HTML markup used when displaying view counts."
 msgstr ""
 
@@ -600,98 +614,98 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: admin/class-lvc-meta.php:92
+#: admin/class-lvc-meta.php:102
 msgid "Post Views"
 msgstr ""
 
-#: admin/class-lvc-meta.php:119
+#: admin/class-lvc-meta.php:129
 msgid "Current Light Views Counter:"
 msgstr ""
 
-#: admin/class-lvc-meta.php:127
+#: admin/class-lvc-meta.php:137
 msgid "Change View Count"
 msgstr ""
 
-#: admin/class-lvc-meta.php:133
+#: admin/class-lvc-meta.php:143
 msgid "New View Count:"
 msgstr ""
 
-#: admin/class-lvc-meta.php:147
+#: admin/class-lvc-meta.php:157
 msgid "Enter new view count and save the post to apply changes. This action will directly override the current view data."
 msgstr ""
 
-#: admin/class-lvc-meta.php:150
+#: admin/class-lvc-meta.php:160
 msgid "Cancel"
 msgstr ""
 
-#: includes/class-lvc-api.php:113
+#: includes/class-lvc-api.php:123
 msgid "User excluded"
 msgstr ""
 
-#: includes/class-lvc-api.php:137
+#: includes/class-lvc-api.php:147
 msgid "Ok"
 msgstr ""
 
-#: includes/class-lvc-api.php:145
+#: includes/class-lvc-api.php:155
 msgid "Failed"
 msgstr ""
 
-#: includes/class-lvc-api.php:166
+#: includes/class-lvc-api.php:176
 msgid "Rate Limited"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:26
+#: widgets/class-lvc-popular-posts-widget.php:46
 msgid "Popular Posts (Light Views Counter)"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:28
+#: widgets/class-lvc-popular-posts-widget.php:48
 msgid "Display most popular posts based on view counts."
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:40 widgets/class-lvc-popular-posts-widget.php:126
+#: widgets/class-lvc-popular-posts-widget.php:60 widgets/class-lvc-popular-posts-widget.php:145
 msgid "Popular Posts"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:102
+#: widgets/class-lvc-popular-posts-widget.php:121
 msgid "views"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:135
+#: widgets/class-lvc-popular-posts-widget.php:154
 msgid "Title:"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:142
+#: widgets/class-lvc-popular-posts-widget.php:161
 msgid "Number of posts:"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:149
+#: widgets/class-lvc-popular-posts-widget.php:168
 msgid "Time period:"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:152
+#: widgets/class-lvc-popular-posts-widget.php:171
 msgid "All time"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:153
+#: widgets/class-lvc-popular-posts-widget.php:172
 msgid "Last 7 days"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:154
+#: widgets/class-lvc-popular-posts-widget.php:173
 msgid "Last 15 days"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:155
+#: widgets/class-lvc-popular-posts-widget.php:174
 msgid "Last 30 days"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:162
+#: widgets/class-lvc-popular-posts-widget.php:181
 msgid "Display thumbnail"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:169
+#: widgets/class-lvc-popular-posts-widget.php:188
 msgid "Display view count"
 msgstr ""
 
-#: widgets/class-lvc-popular-posts-widget.php:176
+#: widgets/class-lvc-popular-posts-widget.php:195
 msgid "Display post date"
 msgstr ""

@@ -4,7 +4,7 @@ Tags: views, popular posts, statistics, counter, tracking
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -406,6 +406,14 @@ Yes! Comprehensive developer tools:
 * `POST /wp-json/lightvc/v1/count`
 
 == Changelog ==
+
+= 1.2.0 =
+
+* Added: Delete Data on Uninstall setting
+* Fixed: Scroll Threshold and Time Window now accept 0 value
+* Fixed: Time Window unit calculation (seconds, not minutes)
+* Fixed: Supported Post Types setting now properly enforced
+* Improved: Consistent default values across PHP and JavaScript
 
 = 1.1.0 =
 

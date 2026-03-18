@@ -7,7 +7,7 @@
  * Author:            ThemeRuby
  * License:           GPLv3
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author URI:        https://themeruby.com/
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ============================================================================
 
 if ( ! defined( 'LIGHTVC_VERSION' ) ) {
-	define( 'LIGHTVC_VERSION', '1.1.0' );
+	define( 'LIGHTVC_VERSION', '1.2.0' );
 }
 
 if ( ! defined( 'LIGHTVC_PLUGIN_DIR' ) ) {
@@ -80,6 +80,7 @@ function lightvc_activate() {
 		'lightvc_supported_post_types'  => [ 'post' ], // Track 'post' type by default
 		'lightvc_query_method'          => 'subquery', // Subquery method for ordering (default)
 		'lightvc_exclude_bots'          => 1,          // Exclude bots enabled by default
+		'lightvc_uninstall_data'        => 0,          // Delete data on uninstall disabled by default
 	];
 
 	foreach ( $default_options as $option => $value ) {
@@ -253,6 +254,6 @@ function lightvc_get_popular_posts( $args = [] ) {
  */
 function lightvc_is_foxiz_core_active() {
 	return class_exists( 'Foxiz_Core' ) ||
-	       defined( 'FOXIZ_CORE_PATH' ) ||
-	       ( function_exists( 'is_plugin_active' ) && is_plugin_active( 'foxiz-core/foxiz-core.php' ) );
+			defined( 'FOXIZ_CORE_PATH' ) ||
+			( function_exists( 'is_plugin_active' ) && is_plugin_active( 'foxiz-core/foxiz-core.php' ) );
 }
