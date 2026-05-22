@@ -7,7 +7,7 @@
  * Author:            ThemeRuby
  * License:           GPLv3
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
- * Version:           1.2.0
+ * Version:           1.3.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author URI:        https://themeruby.com/
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ============================================================================
 
 if ( ! defined( 'LIGHTVC_VERSION' ) ) {
-	define( 'LIGHTVC_VERSION', '1.2.0' );
+	define( 'LIGHTVC_VERSION', '1.3.0' );
 }
 
 if ( ! defined( 'LIGHTVC_PLUGIN_DIR' ) ) {

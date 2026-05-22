@@ -2,9 +2,9 @@
 Contributors: themeruby
 Tags: views, popular posts, statistics, counter, tracking
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -406,6 +406,12 @@ Yes! Comprehensive developer tools:
 * `POST /wp-json/lightvc/v1/count`
 
 == Changelog ==
+
+= 1.3.0 =
+
+* Improved: Targeted cache clearing instead of full flush for better performance
+* Improved: Static caching for plugin options to reduce database queries
+* Compatibility: Tested with WordPress 7.0
 
 = 1.2.0 =
 

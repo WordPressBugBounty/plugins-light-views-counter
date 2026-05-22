@@ -88,14 +88,35 @@ class LIGHTVC_Cache {
 	/**
 	 * Clear all plugin caches.
 	 *
-	 * Clears object cache.
+	 * Uses targeted group flush when available (WP 6.1+),
+	 * otherwise clears popular posts cache only.
 	 *
 	 * @return bool True on success.
 	 */
 	public static function clear_all() {
+		// Use group flush if available (WordPress 6.1+)
+		if ( function_exists( 'wp_cache_supports' ) && wp_cache_supports( 'flush_group' ) ) {
+			wp_cache_flush_group( 'lightvc' );
+			return true;
+		}
 
-		// Clear WordPress object cache
-		wp_cache_flush();
+		// Fallback: Delete known cache keys
+		// Note: Individual post view caches will expire naturally
+		// We focus on clearing popular posts cache which is more impactful
+		$date_ranges = [ 0, 7, 15, 30 ];
+		$post_types  = get_post_types( [ 'public' => true ] );
+
+		foreach ( $date_ranges as $range ) {
+			foreach ( $post_types as $post_type ) {
+				$args = [
+					'limit'      => 10,
+					'post_type'  => $post_type,
+					'date_range' => $range,
+				];
+				$cache_key = 'lightvc_popular_' . md5( wp_json_encode( $args ) );
+				wp_cache_delete( $cache_key, 'lightvc' );
+			}
+		}
 
 		return true;
 	}
